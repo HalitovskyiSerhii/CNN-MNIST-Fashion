@@ -79,7 +79,7 @@ model.compile(optimizer='adam',
 
 callbacks = [
     # Interrupt training if `val_loss` stops improving for over 2 epochs
-    tf.keras.callbacks.EarlyStopping(patience=3, monitor='val_acc', mode='max'),
+    tf.keras.callbacks.EarlyStopping(patience=5, monitor='val_acc', mode='max'),
     # Write TensorBoard logs to `./logs` directory
     tf.keras.callbacks.TensorBoard(log_dir='./logs')
 ]
@@ -98,7 +98,7 @@ if not os.path.exists(weights_file):
 
     open(os.path.abspath(weights_file), 'w').close()
 
-    history = model.fit(partial_train_images, partical_train_labels, epochs=20,
+    history = model.fit(partial_train_images, partical_train_labels, epochs=30,
                         batch_size=64, validation_data=(val_images, val_labels), verbose=1,
                         callbacks=callbacks)
 
