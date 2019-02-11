@@ -48,12 +48,21 @@ model = keras.Sequential([
     keras.layers.BatchNormalization(),
 
     keras.layers.Conv2D(filters=32,
-                        kernel_size=[2, 2],
+                        kernel_size=[4, 4],
                         padding="same",
                         activation=tf.nn.relu),
 
     keras.layers.MaxPooling2D(pool_size=[2, 2], strides=2),
-    
+
+    keras.layers.Conv2D(filters=32,
+                        kernel_size=[4, 4],
+                        padding="same",
+                        activation=tf.nn.relu),
+
+    keras.layers.MaxPooling2D(pool_size=[2, 2], strides=2),
+
+    keras.layers.BatchNormalization(),
+
     keras.layers.Flatten(),
     keras.layers.Dense(128,
                        activation=keras.activations.relu,
