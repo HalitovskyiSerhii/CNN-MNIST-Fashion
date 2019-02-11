@@ -31,6 +31,9 @@ test_images = test_images.reshape((test_images.shape[0],28,28,1))
 print(train_images.shape)
 
 model = keras.Sequential([
+
+    keras.layers.BatchNormalization(),
+
     keras.layers.Conv2D(input_shape=(28, 28, 1),
                         filters=32,
                         kernel_size=4,
