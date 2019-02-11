@@ -37,6 +37,11 @@ model = keras.Sequential([
                         padding="same",
                         activation=tf.nn.relu),
 
+    keras.layers.Conv2D(input_shape=(28, 28, 1),
+                        filters=64,
+                        kernel_size=4,
+                        padding="same",
+                        activation=tf.nn.relu),
 
     keras.layers.MaxPooling2D(pool_size=[2, 2], strides=2),
 
