@@ -37,11 +37,6 @@ model = keras.Sequential([
                         padding="same",
                         activation=tf.nn.relu),
 
-    keras.layers.Conv2D(input_shape=(28, 28, 1),
-                        filters=64,
-                        kernel_size=4,
-                        padding="same",
-                        activation=tf.nn.relu),
 
     keras.layers.MaxPooling2D(pool_size=[2, 2], strides=2),
 
@@ -101,7 +96,7 @@ if not os.path.exists(weights_file):
 
     open(os.path.abspath(weights_file),'w').close()
 
-    history = model.fit(partial_train_images, partical_train_labels, epochs=12,
+    history = model.fit(partial_train_images, partical_train_labels, epochs=20,
                         batch_size=64, validation_data=(val_images, val_labels), verbose=1,
                         callbacks=callbacks)
 
