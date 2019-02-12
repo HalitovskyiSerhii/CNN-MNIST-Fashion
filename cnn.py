@@ -103,3 +103,11 @@ else:
 results = model.evaluate(test_images, test_labels)
 
 print(results)
+
+predictions = model.predict(test_images)
+conf_matrix = tf.confusion_matrix(test_labels, predictions)
+
+plt.ylabel(class_names)
+plt.xlabel(class_names)
+plt.matshow(conf_matrix)
+

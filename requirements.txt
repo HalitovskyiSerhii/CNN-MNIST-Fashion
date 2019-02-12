@@ -4,7 +4,6 @@ gunicorn==19.9.0
 itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.0
-pkg-resources==0.0.0
 Werkzeug==0.14.1
 Click==7.0
 Flask==1.0.2
@@ -12,7 +11,6 @@ gunicorn==19.9.0
 itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.0
-pkg-resources==0.0.0
 Werkzeug==0.14.1
 absl-py==0.7.0
 astor==0.7.1
@@ -32,7 +30,6 @@ Markdown==3.0.1
 MarkupSafe==1.1.0
 matplotlib==3.0.2
 numpy==1.16.1
-pkg-resources==0.0.0
 protobuf==3.6.1
 pyparsing==2.3.1
 python-dateutil==2.8.0
