@@ -100,21 +100,48 @@ if not os.path.exists(weights_file):
 else:
     model.load_weights(str(weights_file))
 
-results = model.evaluate(test_images, test_labels)
+#results = model.evaluate(test_images, test_labels)
 
-print(results)
+#print(results)
 
 predictions = model.predict(test_images)
 print(predictions.shape)
 
-predictions1D = np.zeros(10000)
+predictions1D = np.zeros(10000,dtype=np.int16)
 
-for row in predictions:
-    np.insert(predictions1D, predictions.index(row), np.argmax(predictions))
+for row_i in range(len(predictions)):
+    predictions1D[row_i] = np.argmax(predictions[row_i])
 
-conf_matrix = tf.confusion_matrix(test_labels, predictions1D)
 
-plt.ylabel(class_names)
-plt.xlabel(class_names)
-plt.matshow(conf_matrix)
+print(predictions1D)
+conf_matrix = np.zeros((10,10),dtype=np.int16)
+
+for i in range(len(predictions1D)):
+
+    p_class = predictions1D[i]
+    t_class = test_labels[i]
+    conf_matrix[t_class][p_class] = conf_matrix[t_class][p_class] + 1
+        
+        
+cm = conf_matrix
+
+thresh = cm.max() / 2.0
+
+
+import itertools
+
+for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+    plt.text(j, i, "{:,}".format(cm[i, j]),
+            horizontalalignment="center",
+            color="white" if cm[i, j] > thresh else "black")
+
+plt.ylabel('True classes')
+plt.xlabel('Predicted classes')
+plt.imshow(cm, interpolation='nearest', cmap=plt.get_cmap('Blues'))
+tick_marks = np.arange(len(class_names))
+plt.xticks(tick_marks, class_names, rotation=45)
+plt.yticks(tick_marks, class_names)
+plt.title('Confusion matrix')
+plt.tight_layout()
+plt.show()
 
