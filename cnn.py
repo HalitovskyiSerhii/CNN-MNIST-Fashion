@@ -106,7 +106,13 @@ print(results)
 
 predictions = model.predict(test_images)
 print(predictions.shape)
-conf_matrix = tf.confusion_matrix(test_labels, predictions)
+
+predictions1D = np.zeros(10000)
+
+for row in predictions:
+    np.insert(predictions1D, predictions.index(row), np.argmax(predictions))
+
+conf_matrix = tf.confusion_matrix(test_labels, predictions1D)
 
 plt.ylabel(class_names)
 plt.xlabel(class_names)
