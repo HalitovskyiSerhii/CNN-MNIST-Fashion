@@ -1,15 +1,15 @@
 # Image CNN classifier trained on fashion-MNIST.
-This is my first neural network. My goal was to create CNN, learn how works convolution neural networks, how batch normalization and dropout layers improve model results and learn Keras and Tensorflow frameworks. As train data i chose the [fashion-MNIST](https://github.com/zalandoresearch/fashion-mnist) dataset and model reaches 92.53% accuracy on average. You can find further information about the dataset on [Zalando Research](https://github.com/zalandoresearch/fashion-mnist) and [Kaggle](https://www.kaggle.com/zalando-research/fashionmnist)
+This is my first neural network. My goal was to create CNN, learn how works convolution neural networks, how batch normalization and dropout layers improve model results and learn Keras and Tensorflow frameworks. As train data, I chose the [fashion-MNIST](https://github.com/zalandoresearch/fashion-mnist) dataset and model reaches 92.53% accuracy on average. You can find further information about the dataset on [Zalando Research](https://github.com/zalandoresearch/fashion-mnist) and [Kaggle](https://www.kaggle.com/zalando-research/fashionmnist)
 
 ##Training and evaluation
-I splitted the training data on in train(75%) and validation(25%) samples. The testset of 10,000 images are used for final evaluation.
+I split the training data on a train(75%) and validation(25%) samples. The test set of 10,000 images are used for final evaluation.
 
 ##Model
-I was trying to create a very simple architecture with less than 500,000 parameters. Model have 2 blocks of convolution, max polling, batch normalization and dropout layers. Last block connected to dense layers. This is the summary of model:
+I was trying to create a very simple architecture with less than 500,000 parameters. The model has 2 blocks of convolution, max polling, batch normalization and dropout layers. Last block connected to dense layers. This is the summary of the model:
 
 ![Summary](img/summary.jpg)
 
-This model can't reach accuracy more then 92% because there is difficult to distinguish between T-shirt/Top and Shirt classes. And as we can see in compusion matrix, most dismatches model makes on these two classes.
+This model can't reach accuracy more than 92% because it is difficult to distinguish between T-shirt/Top and Shirt classes. And as we can see in the confusion matrix, most mismatches model makes on these two classes.
 
 ![Confusion matrix](img/confusion.jpg)
 
